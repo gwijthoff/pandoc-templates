@@ -1,0 +1,32 @@
+\documentclass[11pt]{letter}
+\makeatletter
+\let\@texttop\relax
+\makeatother
+\usepackage{hyperref}
+\hypersetup{colorlinks=true , urlcolor=cyan}
+\usepackage[pdftex]{graphicx}
+
+\address{Dr. Grant R. Wythoff \\ Heyman Center, 5730 \\ 2960 Broadway \\ New York, NY 20027 \\ \href{mailto:grant.wythoff@gmail.com}{grant.wythoff@gmail.com}}
+\signature{
+    Dr. Grant R. Wythoff \\ 
+    Postdoctoral Fellow \\ 
+    Society of Fellows in the Humanities \\ 
+    Lecturer \\ 
+    Department of English \& Comp Lit \\ 
+    \href{wythoff.net}{wythoff.net}
+    }
+
+\begin{document}
+$if(addressee)$
+\begin{letter}{$addressee$}
+$else$
+\begin{letter}{\mbox{}\\\mbox{}}
+$endif$
+
+$body$
+
+\addtolength{\medskipamount}{-1\medskipamount} % deletes default space for hand sig
+\closing{Sincerely,
+\includegraphics[scale=0.2]{signature_blue}}
+\end{letter}
+\end{document}

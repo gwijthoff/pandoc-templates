@@ -1,0 +1,24 @@
+% Gernsback Book Proposal v.1
+
+\documentclass{article}
+%\usepackage[utf8]{inputenc}
+\usepackage{hyperref, fancyhdr} %hyperlinks; header text
+
+\pagestyle{fancy} %adds header
+\lhead{Wythoff}
+\chead{}
+\rhead{Proposal: \textit{The Perversity of Things}}
+
+\title{ \textit{The Perversity of Things:} \\ 
+{Writings on Media, Technology, \& Science Fiction} \\
+Hugo Gernsback}
+\author{Grant Wythoff, editor \\
+Society of Fellows in the Humanities \\
+Columbia University \\
+\url{http://wythoff.net}
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
