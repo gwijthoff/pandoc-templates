@@ -1,7 +1,7 @@
 %%% A template to produce a nice-looking Curriculum Vitae.
 %%%
-%%% Authored by Caleb McDaniel <caleb.mcdaniel@rice.edu>
 %%% Based on design by Kieran Healy <kjhealy@gmail.com>
+%%% With Pandoc-specific tweaks by Caleb McDaniel <caleb.mcdaniel@rice.edu>
 %%% Most recent version of his is at http://kjhealy.github.com/kjh-vita
 %%%
 %%% This template differs from Healy's by using the marginnote package to make
@@ -54,16 +54,13 @@
 \def\myfax{(212) 662-7289}
 \def\myversion{}
 \def\myrevision{}
-
-
-\def\myaffiliation{Columbia University}
-\def\myauthor{Grant R. Wythoff}
 \def\mykeywords{Wythoff, Grant, Grant Wythoff, media studies, Vita, CV}
 
 
 %%%------------------------------------------------------------------------
 %%% Required style files
 %%%------------------------------------------------------------------------
+
 \usepackage{url,fancyhdr}
 \pagestyle{plain}
 \frenchspacing
@@ -99,12 +96,13 @@
 %%%------------------------------------------------------------------------
 %%% Document
 %%%------------------------------------------------------------------------
+
 \begin{document}
 
 %% Choose fonts for use with xelatex
-%% \setromanfont[Mapping={tex-text},Numbers={OldStyle},Ligatures={Common}]{Palatino} 
+\setromanfont[Mapping={tex-text},Numbers={OldStyle},Ligatures={Common}]{Palatino} 
 \setsansfont[Mapping=tex-text]{Optima Bold}
-\setmonofont[Mapping=tex-text,Scale=0.9]{Inconsolata} 
+\setmonofont[Mapping=tex-text,Scale=0.9]{Optima} 
 
 
 %%%------------------------------------------------------------------------
@@ -119,7 +117,7 @@
 
 %% Custom hanging indent for vita items
 \def\ind{\hangindent=1 true cm\hangafter=1 \noindent}
-%\def\ind{\hangindent=18pt\hangafter=1 \noindent}
+
 \def\labelitemi{~}
 \renewcommand{\labelitemii}{~}
 
@@ -164,10 +162,10 @@
 \subsection{Positions}
 
 \subsubsection{Columbia University}
-\ind Postdoctoral Fellow, Society of Fellows in the Humanities (2013-Present)
-\medskip
+Postdoctoral Fellow, Society of Fellows in the Humanities (2013-Present)
+
 \subsubsection{Columbia University}
-\ind Lecturer, Department of English and Comparative Literature
+Lecturer, Department of English and Comparative Literature (2013-Present)
 
 \medskip
 
@@ -176,59 +174,31 @@
 
 \subsubsection{Princeton University}
 
-\ind Ph.D, English Literature, 2013. Dissertation: \emph{Gadgetry: New Media and the Fictional Imagination}. 
+Ph.D, English Literature, 2013.
+\ind Dissertation: \emph{Gadgetry: New Media and the Fictional Imagination}. 
 
-\ind M.A., English Literature, 2009.
+M.A., English Literature, 2009.
 
-\ind Certificate in Media and Modernity, 2009. %\vspace{-0.1in}
+Certificate in Media and Modernity, 2009. %\vspace{-0.1in}
 
 \medskip
 \subsubsection{Rutgers University, New Brunswick}
 
-\ind B.A., English Literature, 2007. \emph{Summa Cum Laude} %\vspace{0.01in}
+B.A., English Literature, 2007. \emph{Summa Cum Laude} %\vspace{0.01in}
 
-\medskip
+$for(include-before)$
+$include-before$
 
-\subsection{Publications}
+$endfor$
+$if(toc)$
+\tableofcontents
+$endif$
 
-\subsubsection{Book}
+$body$
 
-\ind ``The Ever-Restless Ocean: Garrisonian Abolitionism, Transatlantic
-Reform, and the Problem of Democracy'' (forthcoming, Louisiana State
-University Press, 2013)
+$for(include-after)$
+$include-after$
 
-\subsubsection{Peer-Reviewed Articles and Book Chapters}
-
-\ind ``His Brothers' Keeper: John Brown, Moral Stewardship, and
-Interracial Abolitionism'' \emph{Slavery and Abolition} 32, no. 1 (March
-2011), 27-52. ({[}link{]}{[}brown{]})
-
-\ind ``Saltwater Antislavery: American Abolitionists on the Atlantic
-Ocean in the Age of Steam,'' \emph{Atlantic Studies} 8, no. 2 (June
-2011), 141-163 (lead article for special issue on ``Abolitionist
-Places''). ({[}link{]}{[}saltwater{]})
-
-\ind ``Philadelphia Abolitionists and Antislavery Cosmopolitanism,
-1760-1840,'' in \emph{Antislavery and Abolition in Philadelphia:
-Emancipation and the Long Struggle for Racial Justice in the City of
-Brotherly Love}, ed. Richard Newman and James Mueller (Baton Rouge: LSU
-Press, 2011), 149-173. ({[}link{]}{[}philadelphia{]})
-
-\ind ``Repealing Unions: American Abolitionists, Irish Repeal, and the
-Origins of Garrisonian Disunionism,'' \emph{Journal of the Early
-Republic} 28, no. 2 (2008), 243-269. ({[}download{]}{[}repeal{]})
-
-\ind ``The Fourth and the First: Abolitionist Holidays, Respectability,
-and Radical Interracial Reform,'' \emph{American Quarterly} 57, no. 1
-(2005): 129-151. {[}download{]}{[}fourth{]}
-
-\ind [brown]:
-http://www.tandfonline.com/doi/abs/10.1080/0144039X.2011.538197
-\ind [saltwater]:
-http://www.tandfonline.com/doi/abs/10.1080/14788810.2011.562349
-\ind [philadelphia]:
-http://www.amazon.com/Antislavery-Abolition-Philadelphia-Emancipation-Brotherly/dp/0807139912
-\ind [repeal]: http://scholarship.rice.edu/handle/1911/27612
-\ind [fourth]: http://scholarship.rice.edu/handle/1911/27613
+$endfor$
 
 \end{document}
