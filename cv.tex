@@ -10,27 +10,6 @@
 %%% approach is that it requires less manual tweaking of spaces. A disadvantage is
 %%% that section titles must be short: a section title longer than "Publications"
 %%% could cause spacing problems.
-%%%
-%%% ------------------------------------------------------------------------
-%%% Requirements (should be included in a modern tex distribution):
-%%% ------------------------------------------------------------------------
-%%%
-%%% xelatex
-%%% fontspec.sty
-%%% hyperrref.sty
-%%% xunicode.sty
-%%% color.sty
-%%% url.sty
-%%% fancyhdr.sty
-%%% marginnote.sty
-%%% titlesec.sty
-%%%
-%%% ------------------------------------------------------------------------
-%%% Optional
-%%% ------------------------------------------------------------------------
-%%%
-%%% Fonts
-%%%
 
 \documentclass[11pt]{article}
 
@@ -61,9 +40,36 @@
 %%% Required style files
 %%%------------------------------------------------------------------------
 
-\usepackage{url,fancyhdr}
+%% hyphens option allows hyperlinks to line break at hyphens
+\usepackage[hyphens]{url}
+\usepackage{fancyhdr}
 \pagestyle{plain}
 \frenchspacing
+
+%% replaces automatic hyphenation with hookleftarrow symbol for URLs
+\usepackage{hyphenat}
+\usepackage{xstring}
+\usepackage{forloop}
+\usepackage{xcolor}
+
+\newsavebox\MyArrowBox%
+\sbox\MyArrowBox{$\hookleftarrow$}%
+\makeatletter%
+\newcommand*{\BreakableChar}{%
+  \leavevmode%
+  \prw@zbreak%
+  \discretionary{\usebox\MyArrowBox}{}{}%
+  \prw@zbreak%
+}%
+
+\newcounter{index}%
+\newcommand{\AddBreakableChars}[1]{%
+  \StrLen{#1 }[\stringLength]%
+  \forloop[1]{index}{1}{\value{index}<\stringLength}{%
+    \StrChar{#1}{\value{index}}[\currentLetter]%
+    {\currentLetter\BreakableChar}%
+  }%
+}%
 
 %% needed for xelatex to work
 \usepackage{fontspec}
@@ -159,7 +165,7 @@
 \bigskip 
 
 %% Positions
-\subsection{Positions}
+\section{Positions}
 
 \subsubsection{Columbia University}
 Postdoctoral Fellow, Society of Fellows in the Humanities (2013-Present)
@@ -172,7 +178,7 @@ Lecturer, Department of English and Comparative Literature (2013-Present)
 \medskip
 
 %% Education
-\subsection{Education}
+\section{Education}
 
 \subsubsection{Princeton University}
 
