@@ -46,31 +46,6 @@
 \pagestyle{plain}
 \frenchspacing
 
-%% replaces automatic hyphenation with hookleftarrow symbol for URLs
-\usepackage{hyphenat}
-\usepackage{xstring}
-\usepackage{forloop}
-\usepackage{xcolor}
-
-\newsavebox\MyArrowBox%
-\sbox\MyArrowBox{$\hookleftarrow$}%
-\makeatletter%
-\newcommand*{\BreakableChar}{%
-  \leavevmode%
-  \prw@zbreak%
-  \discretionary{\usebox\MyArrowBox}{}{}%
-  \prw@zbreak%
-}%
-
-\newcounter{index}%
-\newcommand{\AddBreakableChars}[1]{%
-  \StrLen{#1 }[\stringLength]%
-  \forloop[1]{index}{1}{\value{index}<\stringLength}{%
-    \StrChar{#1}{\value{index}}[\currentLetter]%
-    {\currentLetter\BreakableChar}%
-  }%
-}%
-
 %% needed for xelatex to work
 \usepackage{fontspec}
 \usepackage{xunicode}
@@ -81,6 +56,7 @@
 %% hyperlinks
 \usepackage[xetex, 
 	colorlinks=false,
+	breaklinks=true,
 	urlcolor=Blue,
 	plainpages=false,
   	pdfpagelabels,
@@ -98,6 +74,7 @@
 \titleformat{\subsubsection}[hang]{}{}{0em}{\smallskip\noindent\emph{ #1}}{}
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+
 
 %%%------------------------------------------------------------------------
 %%% Document
@@ -165,20 +142,20 @@
 \bigskip 
 
 %% Positions
-\section{Positions}
+\section*{Positions}
 
 \subsubsection{Columbia University}
+
 Postdoctoral Fellow, Society of Fellows in the Humanities (2013-Present)
 
 \smallskip
 
-\subsubsection{Columbia University}
 Lecturer, Department of English and Comparative Literature (2013-Present)
 
 \medskip
 
 %% Education
-\section{Education}
+\section*{Education}
 
 \subsubsection{Princeton University}
 
@@ -197,6 +174,8 @@ Certificate in Media and Modernity, 2009. %\vspace{-0.1in}
 \subsubsection{Rutgers University, New Brunswick}
 
 B.A., English Literature, 2007. \emph{Summa Cum Laude} %\vspace{0.01in}
+
+\medskip
 
 $for(include-before)$
 $include-before$
